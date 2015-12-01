@@ -1,7 +1,18 @@
 package models;
 
-public class Licitacao extends Model{
-    
+import java.util.List;
+import play.db.jpa.JPA;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "licitacao")
+public class Licitacao extends ModelPersistence{
+
+
+    private static final long serialVersionUID = 389285360394591550L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Long id;
     public String dataAberturaProposta;
     public String dataEntregaEdital;
@@ -11,10 +22,10 @@ public class Licitacao extends Model{
     public String funcaoResponsavel;
     public String identificador;
     public String infoGeral;
-    public String modalidade;
+    public int modalidade;
     public String nomeResponsavel;
-    public String numeroAviso;
-    public String numeroItens;
+    public int numeroAviso;
+    public int numeroItens;
     public String numeroProcesso;
     public String objeto;
     public String situacaoAviso;
@@ -22,311 +33,142 @@ public class Licitacao extends Model{
     public String tipoRecurso;
     public String uasg;
     public String descricaoItem;
-    public String quantidateValorEstimadoItem;
+    public int quantidateItem;
+    public float valorEstimadoItem;
     public String descricaoDetalhadaItem;
     public String margemPreferencial;
     public String situacaoItem;
-    public String menorLance;
+    public float menorLance;
     public String decreto7174;
     public String fornecedorVencedor;
     public String tratamentoDiferenciado;
     public String unidadeFornecimento;
-    public String valorNegociado;
+    public float valorNegociado;
     public String url;
+    public String situacao;
 
-    public Licitacao(){}
 
-    public Licitacao(String id, String dataAberturaProposta,
-                     String dataEntregaEdital, String dataProposta,
-                     String dataPublicação, String endereçoEntrgaEdital,
-                     String funcaoResponsavel, String identificador,
-                     String infoGeral, String modalidade,
-                     String nomeResponsavel, String numeroAviso,
-                     String numeroItens, String numeroProcesso,
-                     String objeto, String situacaoAviso, String tipoPregao,
-                     String tipoRecurso, String uasg, String descricaoItem,
-                     String quantidateValorEstimadoItem, String descricaoDetalhadaItem,
-                     String margemPreferencial, String situacaoItem, String menorLance,
-                     String decreto7174, String fornecedorVencedor, String tratamentoDiferenciado,
-                     String unidadeFornecimento, String valorNegociado, String url) {
-        this.id = id;
-        this.dataAberturaProposta = dataAberturaProposta;
-        this.dataEntregaEdital = dataEntregaEdital;
-        this.dataProposta = dataProposta;
-        this.dataPublicação = dataPublicação;
-        this.endereçoEntrgaEdital = endereçoEntrgaEdital;
-        this.funcaoResponsavel = funcaoResponsavel;
-        this.identificador = identificador;
-        this.infoGeral = infoGeral;
-        this.modalidade = modalidade;
-        this.nomeResponsavel = nomeResponsavel;
-        this.numeroAviso = numeroAviso;
-        this.numeroItens = numeroItens;
-        this.numeroProcesso = numeroProcesso;
-        this.objeto = objeto;
-        this.situacaoAviso = situacaoAviso;
-        this.tipoPregao = tipoPregao;
-        this.tipoRecurso = tipoRecurso;
-        this.uasg = uasg;
-        this.descricaoItem = descricaoItem;
-        this.quantidateValorEstimadoItem = quantidateValorEstimadoItem;
-        this.descricaoDetalhadaItem = descricaoDetalhadaItem;
-        this.margemPreferencial = margemPreferencial;
-        this.situacaoItem = situacaoItem;
-        this.menorLance = menorLance;
-        this.decreto7174 = decreto7174;
-        this.fornecedorVencedor = fornecedorVencedor;
-        this.tratamentoDiferenciado = tratamentoDiferenciado;
-        this.unidadeFornecimento = unidadeFornecimento;
-        this.valorNegociado = valorNegociado;
-        this.url = url;
+    public static Licitacao findById(Long id) {
+        return JPA.em().find(Licitacao.class, id);
     }
 
-    public String getId() {
-        return id;
+    public static Licitacao findByIdentificador(String identificador) {
+
+        try{
+
+            List<Licitacao> results = queryFindByIdentificador(identificador).getResultList();
+            if (!results.isEmpty()) return results.get(0);
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
     }
 
-    public void setId(String id) {
-        this.id = id;
+
+
+    public static TypedQuery<Licitacao> queryFindByIdentificador(String identificador) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.identificador = :identificador", Licitacao.class);
+            query.setParameter("identificador", identificador);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
     }
 
-    public String getDataAberturaProposta() {
-        return dataAberturaProposta;
+
+    public static List<Licitacao> findBySituacao(String situacao) {
+
+        try{
+
+            List<Licitacao> results = queryFindBySituacao(situacao).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
     }
 
-    public void setDataAberturaProposta(String dataAberturaProposta) {
-        this.dataAberturaProposta = dataAberturaProposta;
+    public static TypedQuery<Licitacao> queryFindBySituacao(String situacao) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.situacao = :situacao", Licitacao.class);
+            query.setParameter("situacao", situacao);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
     }
 
-    public String getDataEntregaEdital() {
-        return dataEntregaEdital;
+    public static List<Licitacao> findByValorEstimadoItem(float valorEstimado) {
+
+        try{
+
+            List<Licitacao> results = queryFindByValorEstimadoItem(valorEstimado).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
     }
 
-    public void setDataEntregaEdital(String dataEntregaEdital) {
-        this.dataEntregaEdital = dataEntregaEdital;
+    public static TypedQuery<Licitacao> queryFindByValorEstimadoItem(float valorEstimadoItem) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.valorEstimadoItem = :valorEstimadoItem", Licitacao.class);
+            query.setParameter("valorEstimadoItem", valorEstimadoItem);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
     }
 
-    public String getDataProposta() {
-        return dataProposta;
+
+    public static List<Licitacao> findUntilValorEstimadoItem(float valorEstimado) {
+
+        try{
+
+            List<Licitacao> results = queryFindUntilValorEstimadoItem(valorEstimado).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
     }
 
-    public void setDataProposta(String dataProposta) {
-        this.dataProposta = dataProposta;
+    public static TypedQuery<Licitacao> queryFindUntilValorEstimadoItem(float valorEstimadoItem) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.valorEstimadoItem <= :valorEstimadoItem", Licitacao.class);
+            query.setParameter("valorEstimadoItem", valorEstimadoItem);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
     }
 
-    public String getDataPublicação() {
-        return dataPublicação;
-    }
 
-    public void setDataPublicação(String dataPublicação) {
-        this.dataPublicação = dataPublicação;
-    }
 
-    public String getEndereçoEntrgaEdital() {
-        return endereçoEntrgaEdital;
-    }
 
-    public void setEndereçoEntrgaEdital(String endereçoEntrgaEdital) {
-        this.endereçoEntrgaEdital = endereçoEntrgaEdital;
-    }
+    public static Boolean checkIfUserExistByIdentificador(String identificador) {
 
-    public String getFuncaoResponsavel() {
-        return funcaoResponsavel;
-    }
+        try{
 
-    public void setFuncaoResponsavel(String funcaoResponsavel) {
-        this.funcaoResponsavel = funcaoResponsavel;
-    }
+            List<Licitacao> results = queryFindByIdentificador(identificador).getResultList();
+            if (!results.isEmpty()) return true;
 
-    public String getIdentificador() {
-        return identificador;
-    }
-
-    public void setIdentificador(String identificador) {
-        this.identificador = identificador;
-    }
-
-    public String getInfoGeral() {
-        return infoGeral;
-    }
-
-    public void setInfoGeral(String infoGeral) {
-        this.infoGeral = infoGeral;
-    }
-
-    public String getModalidade() {
-        return modalidade;
-    }
-
-    public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
-    }
-
-    public String getNomeResponsavel() {
-        return nomeResponsavel;
-    }
-
-    public void setNomeResponsavel(String nomeResponsavel) {
-        this.nomeResponsavel = nomeResponsavel;
-    }
-
-    public String getNumeroAviso() {
-        return numeroAviso;
-    }
-
-    public void setNumeroAviso(String numeroAviso) {
-        this.numeroAviso = numeroAviso;
-    }
-
-    public String getNumeroItens() {
-        return numeroItens;
-    }
-
-    public void setNumeroItens(String numeroItens) {
-        this.numeroItens = numeroItens;
-    }
-
-    public String getNumeroProcesso() {
-        return numeroProcesso;
-    }
-
-    public void setNumeroProcesso(String numeroProcesso) {
-        this.numeroProcesso = numeroProcesso;
-    }
-
-    public String getObjeto() {
-        return objeto;
-    }
-
-    public void setObjeto(String objeto) {
-        this.objeto = objeto;
-    }
-
-    public String getSituacaoAviso() {
-        return situacaoAviso;
-    }
-
-    public void setSituacaoAviso(String situacaoAviso) {
-        this.situacaoAviso = situacaoAviso;
-    }
-
-    public String getTipoPregao() {
-        return tipoPregao;
-    }
-
-    public void setTipoPregao(String tipoPregao) {
-        this.tipoPregao = tipoPregao;
-    }
-
-    public String getTipoRecurso() {
-        return tipoRecurso;
-    }
-
-    public void setTipoRecurso(String tipoRecurso) {
-        this.tipoRecurso = tipoRecurso;
-    }
-
-    public String getUasg() {
-        return uasg;
-    }
-
-    public void setUasg(String uasg) {
-        this.uasg = uasg;
-    }
-
-    public String getDescricaoItem() {
-        return descricaoItem;
-    }
-
-    public void setDescricaoItem(String descricaoItem) {
-        this.descricaoItem = descricaoItem;
-    }
-
-    public String getQuantidateValorEstimadoItem() {
-        return quantidateValorEstimadoItem;
-    }
-
-    public void setQuantidateValorEstimadoItem(String quantidateValorEstimadoItem) {
-        this.quantidateValorEstimadoItem = quantidateValorEstimadoItem;
-    }
-
-    public String getDescricaoDetalhadaItem() {
-        return descricaoDetalhadaItem;
-    }
-
-    public void setDescricaoDetalhadaItem(String descricaoDetalhadaItem) {
-        this.descricaoDetalhadaItem = descricaoDetalhadaItem;
-    }
-
-    public String getMargemPreferencial() {
-        return margemPreferencial;
-    }
-
-    public void setMargemPreferencial(String margemPreferencial) {
-        this.margemPreferencial = margemPreferencial;
-    }
-
-    public String getSituacaoItem() {
-        return situacaoItem;
-    }
-
-    public void setSituacaoItem(String situacaoItem) {
-        this.situacaoItem = situacaoItem;
-    }
-
-    public String getMenorLance() {
-        return menorLance;
-    }
-
-    public void setMenorLance(String menorLance) {
-        this.menorLance = menorLance;
-    }
-
-    public String getDecreto7174() {
-        return decreto7174;
-    }
-
-    public void setDecreto7174(String decreto7174) {
-        this.decreto7174 = decreto7174;
-    }
-
-    public String getFornecedorVencedor() {
-        return fornecedorVencedor;
-    }
-
-    public void setFornecedorVencedor(String fornecedorVencedor) {
-        this.fornecedorVencedor = fornecedorVencedor;
-    }
-
-    public String getTratamentoDiferenciado() {
-        return tratamentoDiferenciado;
-    }
-
-    public void setTratamentoDiferenciado(String tratamentoDiferenciado) {
-        this.tratamentoDiferenciado = tratamentoDiferenciado;
-    }
-
-    public String getUnidadeFornecimento() {
-        return unidadeFornecimento;
-    }
-
-    public void setUnidadeFornecimento(String unidadeFornecimento) {
-        this.unidadeFornecimento = unidadeFornecimento;
-    }
-
-    public String getValorNegociado() {
-        return valorNegociado;
-    }
-
-    public void setValorNegociado(String valorNegociado) {
-        this.valorNegociado = valorNegociado;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+        }catch (NoResultException e){
+            return false;
+        }
+        return false;
     }
 }

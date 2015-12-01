@@ -1,0 +1,44 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <non-jta-data-source>DefaultDS</non-jta-data-source>
+        <properties>
+
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+
+             <property name="hibernate.jdbc.batch_size" value="20"/>
+             <property name="hibernate.connection.username" value="root"/>
+             <property name="hibernate.connection.password" value=""/>
+             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+             <property name="hibernate.connection.url" value="jdbc:mysql://localhost/harpia"/>
+             <property name="hibernate.show_sql" value="false"/>
+
+<!--
+            <class>controllers.Application</class>
+            <class>controllers.AppUpdateController</class>
+            <class>controllers.UserController</class>
+-->
+
+            <property name="hibernate.hikaricp.jdbcUrl" value="jdbc:mysql://localhost/harpia"/>
+            <property name="hibernate.hikaricp.username" value=""/>
+            <property name="hibernate.hikaricp.driverClassName" value="com.mysql.jdbc.Driver"/>
+
+
+            <property name="hibernate.hikaricp.validationTimeout" value="30000"/>
+            <property name="hibernate.hikaricp.idleTimeout" value="600000"/>
+            <property name="hibernate.hikaricp.maxLifetime" value="1800000"/>
+            <property name="hibernate.hikaricp.connectionTimeout" value="30000"/>
+            <property name="hibernate.connectionTestQuery" value="SELECT 1"/>
+
+
+
+
+
+        </properties>
+    </persistence-unit>
+</persistence>
