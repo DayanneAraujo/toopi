@@ -22,10 +22,10 @@ public class Licitacao extends ModelPersistence{
     public String funcaoResponsavel;
     public String identificador;
     public String infoGeral;
-    public String modalidade;
+    public int modalidade;
     public String nomeResponsavel;
-    public String numeroAviso;
-    public String numeroItens;
+    public int numeroAviso;
+    public int numeroItens;
     public String numeroProcesso;
     public String objeto;
     public String situacaoAviso;
@@ -33,65 +33,19 @@ public class Licitacao extends ModelPersistence{
     public String tipoRecurso;
     public String uasg;
     public String descricaoItem;
-    public String quantidateValorEstimadoItem;
+    public int quantidateItem;
+    public float valorEstimadoItem;
     public String descricaoDetalhadaItem;
     public String margemPreferencial;
     public String situacaoItem;
-    public String menorLance;
+    public float menorLance;
     public String decreto7174;
     public String fornecedorVencedor;
     public String tratamentoDiferenciado;
     public String unidadeFornecimento;
-    public String valorNegociado;
+    public float valorNegociado;
     public String url;
-
-    public Licitacao(){}
-
-    public Licitacao(Long id, String dataAberturaProposta,
-                     String dataEntregaEdital, String dataProposta,
-                     String dataPublicação, String endereçoEntrgaEdital,
-                     String funcaoResponsavel, String identificador,
-                     String infoGeral, String modalidade,
-                     String nomeResponsavel, String numeroAviso,
-                     String numeroItens, String numeroProcesso,
-                     String objeto, String situacaoAviso, String tipoPregao,
-                     String tipoRecurso, String uasg, String descricaoItem,
-                     String quantidateValorEstimadoItem, String descricaoDetalhadaItem,
-                     String margemPreferencial, String situacaoItem, String menorLance,
-                     String decreto7174, String fornecedorVencedor, String tratamentoDiferenciado,
-                     String unidadeFornecimento, String valorNegociado, String url) {
-        this.id = id;
-        this.dataAberturaProposta = dataAberturaProposta;
-        this.dataEntregaEdital = dataEntregaEdital;
-        this.dataProposta = dataProposta;
-        this.dataPublicação = dataPublicação;
-        this.endereçoEntrgaEdital = endereçoEntrgaEdital;
-        this.funcaoResponsavel = funcaoResponsavel;
-        this.identificador = identificador;
-        this.infoGeral = infoGeral;
-        this.modalidade = modalidade;
-        this.nomeResponsavel = nomeResponsavel;
-        this.numeroAviso = numeroAviso;
-        this.numeroItens = numeroItens;
-        this.numeroProcesso = numeroProcesso;
-        this.objeto = objeto;
-        this.situacaoAviso = situacaoAviso;
-        this.tipoPregao = tipoPregao;
-        this.tipoRecurso = tipoRecurso;
-        this.uasg = uasg;
-        this.descricaoItem = descricaoItem;
-        this.quantidateValorEstimadoItem = quantidateValorEstimadoItem;
-        this.descricaoDetalhadaItem = descricaoDetalhadaItem;
-        this.margemPreferencial = margemPreferencial;
-        this.situacaoItem = situacaoItem;
-        this.menorLance = menorLance;
-        this.decreto7174 = decreto7174;
-        this.fornecedorVencedor = fornecedorVencedor;
-        this.tratamentoDiferenciado = tratamentoDiferenciado;
-        this.unidadeFornecimento = unidadeFornecimento;
-        this.valorNegociado = valorNegociado;
-        this.url = url;
-    }
+    public String situacao;
 
 
     public static Licitacao findById(Long id) {
@@ -124,6 +78,85 @@ public class Licitacao extends ModelPersistence{
             return null;
         }
     }
+
+
+    public static List<Licitacao> findBySituacao(String situacao) {
+
+        try{
+
+            List<Licitacao> results = queryFindBySituacao(situacao).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
+    }
+
+    public static TypedQuery<Licitacao> queryFindBySituacao(String situacao) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.situacao = :situacao", Licitacao.class);
+            query.setParameter("situacao", situacao);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public static List<Licitacao> findByValorEstimadoItem(float valorEstimado) {
+
+        try{
+
+            List<Licitacao> results = queryFindByValorEstimadoItem(valorEstimado).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
+    }
+
+    public static TypedQuery<Licitacao> queryFindByValorEstimadoItem(float valorEstimadoItem) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.valorEstimadoItem = :valorEstimadoItem", Licitacao.class);
+            query.setParameter("valorEstimadoItem", valorEstimadoItem);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+
+    public static List<Licitacao> findUntilValorEstimadoItem(float valorEstimado) {
+
+        try{
+
+            List<Licitacao> results = queryFindUntilValorEstimadoItem(valorEstimado).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
+    }
+
+    public static TypedQuery<Licitacao> queryFindUntilValorEstimadoItem(float valorEstimadoItem) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.valorEstimadoItem <= :valorEstimadoItem", Licitacao.class);
+            query.setParameter("valorEstimadoItem", valorEstimadoItem);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+
 
 
     public static Boolean checkIfUserExistByIdentificador(String identificador) {
