@@ -1,0 +1,31 @@
+-> Como usuário, gostaria de pesquisar por uma licitação
+Critérios de aceitação:
+    - busca ser executada através dos parâmetros
+    - exibir em uma lista
+Parâmetros de busca
+    - número da licitação
+    - órgão da licitação
+    - data da licitação
+    - produto
+    - se é suspeita ou não (filtro ou busca)
+
+-> Ao retornar o resultado da busca, exibir uma lista contendo o tipo de item, o preço, órgão, se é suspeita ou não, número/preço_total, unidade
+    - exibir um botão expandir
+    - ao expandir a linha, exibir resumo de informações, resumos gráficos e um botão para uma página de detalhes completos
+
+-> Ao entrar no sistema, gostaria de ver uma lista de licitações suspeitas (preço acima do normal), assim posso denunciá-las.
+Critérios de aceitação:
+    - acessar o site
+    - visualizar um contador do total de comunicações de irregularidade
+    - visualizar uma lista simplificada de licitações com suspeita de preço acima da média
+    - deve conter o tipo de item, o preço, órgão
+
+-> Ao selecionar uma licitação, expandir a linha e exibir outros detalhes
+    - ao expandir a linha, visualizar resumos gráficos dessas licitações ou relacionados ao tipo de produto
+    - exibir um botão para uma página de detalhes completos (com todos os atributos)
+    - exibir um link para a página da ouvidoria do TCU para realizar uma comunicação de irregularidade
+    - exibir um contador de comunicações de irregularidade para o produto/licitação (baseado nos cliques do botão)
+
+-> Ao entrar no sistema, gostaria de ver uma chamada para resumos gráficos de gastos com licitações de produtos por tipo (café, leite) por período de tempo
+    - exibir na chamada um exemplo de gráfico ilustrando com comentário
+    - exibir um link para uma página que contém resumos estatísticos dos gastos com produtos (como descrito acima)
