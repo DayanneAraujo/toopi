@@ -171,4 +171,34 @@ public class Licitacao extends ModelPersistence{
         }
         return false;
     }
+
+
+
+    public static List<Licitacao> findbyYear(int ano) {
+
+        try{
+
+            List<Licitacao> results = queryFindByYear(ano).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
+    }
+
+    public static TypedQuery<Licitacao> queryFindByYear(int ano) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE YEAR(u.dataAberturaProposta) = :ano", Licitacao.class);
+            query.setParameter("ano", ano);
+
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+
+
 }

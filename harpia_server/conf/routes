@@ -15,3 +15,5 @@ GET        /licitacao/:identificador        controllers.LicitacaoController.getL
 GET        /situacao/:situacao              controllers.LicitacaoController.getSituacao(situacao)
 
 GET        /valorEstimadoItemMax/:valor              controllers.LicitacaoController.getUntilValorEstimadoItem(valor: Float)
+
+GET        /licitacaoPorAno/:ano              controllers.LicitacaoController.getLicitacaoAno(ano: Int)

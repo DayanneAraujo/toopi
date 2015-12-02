@@ -163,6 +163,30 @@ public class LicitacaoController extends Controller {
         return ok(response);
     }
 
+    public Result getLicitacaoAno(int ano) {
 
+        ObjectNode response = Json.newObject();
+
+        if (ano == 0){
+            response.put("status", "0");
+            response.put("message", "{}");
+        }else{
+            List<Licitacao> licitacoes = Licitacao.findbyYear(ano);
+            if (licitacoes != null){
+
+                response.put("status", "1");
+                response.put("result", Json.toJson(licitacoes));
+
+
+
+
+            }else{
+                response.put("status", "0");
+                response.put("message", "Sem Resultado.");
+            }
+        }
+
+        return ok(response);
+    }
 
 }

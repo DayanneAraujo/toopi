@@ -1,0 +1,9 @@
+New log file opened at Tue Dec 01 21:07:27 BRT 2015 by 3483@amaro-ustore
+Sending msg to client activator-bb309fc7-b600-4f9e-b874-ac5073c86592: DetachedLogEvent(LogMessage(debug,sbt server socket logs are in: /home/amaro/Documentos/toopi/harpia_server/.sbtserver/connections/master.log))
+Sending msg to client activator-bb309fc7-b600-4f9e-b874-ac5073c86592: DetachedLogEvent(LogMessage(debug,sbt client logs are in: /home/amaro/Documentos/toopi/harpia_server/.sbtserver/connections/activator-bb309fc7-b600-4f9e-b874-ac5073c86592.log))
+Reading next message from client.
+Sending msg to client activator-bb309fc7-b600-4f9e-b874-ac5073c86592: DetachedLogEvent(LogMessage(debug,sbt general server logs are in: /home/amaro/Documentos/toopi/harpia_server/.sbtserver/master.log))
+Client activator-bb309fc7-b600-4f9e-b874-ac5073c86592 closed, java.net.SocketException: Connection reset, shutting down
+Stopping client.
+Dropping message (0,ReceivedResponse()) to dead client activator-bb309fc7-b600-4f9e-b874-ac5073c86592
+Client activator-bb309fc7-b600-4f9e-b874-ac5073c86592 thread exiting.
