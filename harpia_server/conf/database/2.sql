@@ -14,9 +14,9 @@ create table licitacao (
   informacoes_gerais	VARCHAR(1000),
   modalidade	VARCHAR(500),
   nome_responsavel	VARCHAR(500),
-  numero_aviso	INTEGER,
-  numero_itens	INTEGER,
-  numero_processo	INTEGER,
+  numero_aviso	VARCHAR(100),
+  numero_itens	VARCHAR(100),
+  numero_processo	VARCHAR(100),
   objeto	VARCHAR(500),
   situacao_aviso	VARCHAR(500),
   tipo_pregao	VARCHAR(500),
@@ -40,9 +40,9 @@ create table itenslicitacao(
     decreto_7174 VARCHAR(100),
     descricao_item VARCHAR(700),
     modalidade VARCHAR(500),
-    numero_aviso INTEGER,
-    numero_item_licitacao INTEGER,
-    numero_licitacao INTEGER,
+    numero_aviso VARCHAR(100),
+    numero_item_licitacao VARCHAR(100),
+    numero_licitacao VARCHAR(100) NOT NULL,
     quantidade INTEGER,
     sustentavel VARCHAR(100),
     uasg VARCHAR(250),
@@ -50,8 +50,7 @@ create table itenslicitacao(
     valor_estimado FLOAT,
     situacao VARCHAR(250),
 
-    primary key (id),
-    FOREIGN KEY (numero_licitacao) REFERENCES licitacao (identificador)
+    primary key (id)
 
 
 )

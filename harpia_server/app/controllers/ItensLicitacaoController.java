@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.ItensLicitacao;
 import models.Licitacao;
+import play.db.jpa.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by amaro on 02/12/15.
  */
+@Transactional
 public class ItensLicitacaoController extends Controller {
 
     public Result getItensLicitacao(String id) {

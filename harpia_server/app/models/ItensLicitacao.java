@@ -22,9 +22,9 @@ public class ItensLicitacao extends ModelPersistence {
     public String decreto_7174;
     public String descricao_item;
     public String modalidade;
-    public int numero_aviso;
-    public int numero_item_licitacao;
-    public int numero_licitacao;
+    public String numero_aviso;
+    public String numero_item_licitacao;
+    public String numero_licitacao;
     public int quantidade;
     public String sustentavel;
     public String uasg;
