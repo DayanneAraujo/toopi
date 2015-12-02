@@ -14,57 +14,24 @@ public class Licitacao extends ModelPersistence{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Long id;
-    public String dataAberturaProposta;
-    public String dataEntregaEdital;
-    public String dataProposta;
-    public String dataPublicação;
-    public String endereçoEntrgaEdital;
-    public String funcaoResponsavel;
+    public String data_abertura_proposta;
+    public String data_entrega_edital;
+    public String data_entrega_proposta;
+    public String data_publicacao;
+    public String endereco_entrega_edital;
+    public String funcao_responsavel;
     public String identificador;
-    public String infoGeral;
-    public int modalidade;
-    public String nomeResponsavel;
-    public int numeroAviso;
-    public int numeroItens;
-    public String numeroProcesso;
+    public String informacoes_gerais;
+    public String modalidade;
+    public String nome_responsavel;
+    public String numero_aviso;
+    public String numero_itens;
+    public String numero_processo;
     public String objeto;
-    public String situacaoAviso;
-    public String tipoPregao;
-    public String tipoRecurso;
+    public String situacao_aviso;
+    public String tipo_pregao;
+    public String tipo_recurso;
     public String uasg;
-    public String descricaoItem;
-    public int quantidateItem;
-    public float valorEstimadoItem;
-    public String descricaoDetalhadaItem;
-    public String margemPreferencial;
-    public String situacaoItem;
-    public float menorLance;
-    public String decreto7174;
-    public String fornecedorVencedor;
-    public String tratamentoDiferenciado;
-    public String unidadeFornecimento;
-    public float valorNegociado;
-    public String url;
-    public String situacao;
-
-
-    public static Licitacao findById(Long id) {
-        return JPA.em().find(Licitacao.class, id);
-    }
-
-    public static Licitacao findByIdentificador(String identificador) {
-
-        try{
-
-            List<Licitacao> results = queryFindByIdentificador(identificador).getResultList();
-            if (!results.isEmpty()) return results.get(0);
-
-        }catch (NoResultException e){
-            return null;
-        }
-        return null;
-    }
-
 
 
     public static TypedQuery<Licitacao> queryFindByIdentificador(String identificador) {
@@ -79,100 +46,18 @@ public class Licitacao extends ModelPersistence{
         }
     }
 
-
-    public static List<Licitacao> findBySituacao(String situacao) {
-
-        try{
-
-            List<Licitacao> results = queryFindBySituacao(situacao).getResultList();
-            if (!results.isEmpty()) return results;
-
-        }catch (NoResultException e){
-            return null;
-        }
-        return null;
-    }
-
-    public static TypedQuery<Licitacao> queryFindBySituacao(String situacao) {
-        try{
-            TypedQuery<Licitacao> query = JPA.em()
-                    .createQuery("SELECT u FROM Licitacao u WHERE u.situacao = :situacao", Licitacao.class);
-            query.setParameter("situacao", situacao);
-
-            return query;
-        }catch (NoResultException e){
-            return null;
-        }
-    }
-
-    public static List<Licitacao> findByValorEstimadoItem(float valorEstimado) {
-
-        try{
-
-            List<Licitacao> results = queryFindByValorEstimadoItem(valorEstimado).getResultList();
-            if (!results.isEmpty()) return results;
-
-        }catch (NoResultException e){
-            return null;
-        }
-        return null;
-    }
-
-    public static TypedQuery<Licitacao> queryFindByValorEstimadoItem(float valorEstimadoItem) {
-        try{
-            TypedQuery<Licitacao> query = JPA.em()
-                    .createQuery("SELECT u FROM Licitacao u WHERE u.valorEstimadoItem = :valorEstimadoItem", Licitacao.class);
-            query.setParameter("valorEstimadoItem", valorEstimadoItem);
-
-            return query;
-        }catch (NoResultException e){
-            return null;
-        }
-    }
-
-
-    public static List<Licitacao> findUntilValorEstimadoItem(float valorEstimado) {
-
-        try{
-
-            List<Licitacao> results = queryFindUntilValorEstimadoItem(valorEstimado).getResultList();
-            if (!results.isEmpty()) return results;
-
-        }catch (NoResultException e){
-            return null;
-        }
-        return null;
-    }
-
-    public static TypedQuery<Licitacao> queryFindUntilValorEstimadoItem(float valorEstimadoItem) {
-        try{
-            TypedQuery<Licitacao> query = JPA.em()
-                    .createQuery("SELECT u FROM Licitacao u WHERE u.valorEstimadoItem <= :valorEstimadoItem", Licitacao.class);
-            query.setParameter("valorEstimadoItem", valorEstimadoItem);
-
-            return query;
-        }catch (NoResultException e){
-            return null;
-        }
-    }
-
-
-
-
-    public static Boolean checkIfUserExistByIdentificador(String identificador) {
+    public static Licitacao findByIdentificador(String identificador) {
 
         try{
 
             List<Licitacao> results = queryFindByIdentificador(identificador).getResultList();
-            if (!results.isEmpty()) return true;
+            if (!results.isEmpty()) return results.get(0);
 
         }catch (NoResultException e){
-            return false;
+            return null;
         }
-        return false;
+        return null;
     }
-
-
 
     public static List<Licitacao> findbyYear(int ano) {
 
@@ -190,7 +75,7 @@ public class Licitacao extends ModelPersistence{
     public static TypedQuery<Licitacao> queryFindByYear(int ano) {
         try{
             TypedQuery<Licitacao> query = JPA.em()
-                    .createQuery("SELECT u FROM Licitacao u WHERE YEAR(u.dataAberturaProposta) = :ano", Licitacao.class);
+                    .createQuery("SELECT u FROM Licitacao u WHERE YEAR(u.data_publicacao) = :ano", Licitacao.class);
             query.setParameter("ano", ano);
 
             return query;
@@ -199,6 +84,29 @@ public class Licitacao extends ModelPersistence{
         }
     }
 
+    public static TypedQuery<Licitacao> queryFindByOrgao(String uasg) {
+        try{
+            TypedQuery<Licitacao> query = JPA.em()
+                    .createQuery("SELECT u FROM Licitacao u WHERE u.uasg = :uasg", Licitacao.class);
+            query.setParameter("uasg", uasg);
 
+            return query;
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public static List<Licitacao> findByOrgao(String uasg) {
+
+        try{
+
+            List<Licitacao> results = queryFindByOrgao(uasg).getResultList();
+            if (!results.isEmpty()) return results;
+
+        }catch (NoResultException e){
+            return null;
+        }
+        return null;
+    }
 
 }

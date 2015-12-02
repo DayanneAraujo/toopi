@@ -12,8 +12,12 @@ GET        /assets/*file                    controllers.Assets.versioned(path="/
 
 GET        /licitacao/:identificador        controllers.LicitacaoController.getLicitacao(identificador)
 
-GET        /situacao/:situacao              controllers.LicitacaoController.getSituacao(situacao)
+#GET        /situacao/:situacao              controllers.LicitacaoController.getSituacao(situacao)
 
-GET        /valorEstimadoItemMax/:valor              controllers.LicitacaoController.getUntilValorEstimadoItem(valor: Float)
+#GET        /valorEstimadoItemMax/:valor              controllers.LicitacaoController.getUntilValorEstimadoItem(valor: Float)
 
-GET        /licitacaoPorAno/:ano              controllers.LicitacaoController.getLicitacaoAno(ano: Int)
+GET        /licitacaoPorAno/:ano            controllers.LicitacaoController.getLicitacaoAno(ano: Int)
+
+GET        /licitacaoPorOrgao/:uasg              controllers.LicitacaoController.getLicitacaoPorOrgao(uasg)
+
+GET        /itemLicitacaoDescricao/:descricao              controllers.ItensLicitacaoController.getItemDescricao(descricao)
