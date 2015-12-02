@@ -8,6 +8,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.10.5"
 
+
 libraryDependencies ++= Seq(
   javaJdbc,
   javaCore,
@@ -31,6 +32,8 @@ libraryDependencies ++= Seq(
   "com.sun.jersey" % "jersey-servlet" % "1.19",
   "com.sun.jersey.contribs" % "jersey-multipart" % "1.19"
 )
+
+libraryDependencies += "org.postgresql" % "postgresql" % "9.4-1201-jdbc41"
 
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
