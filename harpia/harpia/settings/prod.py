@@ -17,6 +17,7 @@ from dj_database_url import parse as db_url
 from os.path import join
 from sys import path
 from unipath import Path
+import os
 
 BASE_DIR = Path(__file__).absolute().ancestor(2)
 APPS_DIR = BASE_DIR.child('apps')
@@ -135,11 +136,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = config('STATIC_ROOT', default=BASE_DIR.child('staticfiles'))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
-STATIC_URL = config('STATIC_URL', default='/static/')
-
-STATICFILES_DIRS = (BASE_DIR.child('static'), )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
