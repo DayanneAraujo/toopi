@@ -1,1 +1,1 @@
-web: gunicorn shorty.wsgi --log-file -
+web: gunicorn harpia.heroku:application --log-file -
