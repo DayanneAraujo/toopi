@@ -29,6 +29,31 @@
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Preço do Papel', 'Quantidade'],
+          ['Normal',     11],
+          ['Alto',      5],
+          ['Muito Alto',  4],
+
+        ]);
+
+        var options = {
+          title: 'Custo do Papel',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -154,7 +179,9 @@
           <p class="lead">A <span>Feira Livre</span> é um site que disponibiliza para o contribuinte informações simplificadas sobre os gastos de produtos comuns usados no dia-a-dia.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <!--<img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			-->
+			 <div id="piechart_3d" style="width: 700px; height: 400px;"></div>
         </div>
       </div>
 
@@ -166,7 +193,7 @@
           <p class="lead">Veja o custo pago de produtos comuns em licitações; e se fora do padrão denúncie ao TCU. </p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="http://www.ideafixa.com/wp-content/uploads/2015/04/cara-de-susto.jpg" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -178,7 +205,7 @@
           <p class="lead">Utilize nossa API rápida, fácil e padronizada para criar aplicativos webs ou mobiles para combater a corrupção.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="http://innovationleadershipforum.org/wp-content/uploads/2015/02/brainstorming.jpg" alt="Generic placeholder image">
         </div>
       </div>
 
