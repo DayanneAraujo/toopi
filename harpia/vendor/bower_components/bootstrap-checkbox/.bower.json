@@ -1,0 +1,38 @@
+{
+  "name": "bootstrap-checkbox",
+  "version": "1.1.7",
+  "description": "A checkbox component based on Bootstrap framework",
+  "keywords": [
+    "bootstrap",
+    "checkbox",
+    "switch"
+  ],
+  "homepage": "http://vsn4ik.github.io/bootstrap-checkbox",
+  "authors": [
+    {
+      "name": "Vasily A.",
+      "homepage": "https://github.com/vsn4ik"
+    }
+  ],
+  "main": "dist/js/bootstrap-checkbox.js",
+  "ignore": [
+    "docs",
+    ".gitignore",
+    ".travis.yml",
+    "Gruntfile.js",
+    "README.md",
+    "_config.yml",
+    "composer.json",
+    "package.json"
+  ],
+  "license": "MIT",
+  "_release": "1.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.7",
+    "commit": "7c6bd2d0d69ce09a12043e96c267eaf4bf4af9a9"
+  },
+  "_source": "git://github.com/vsn4ik/bootstrap-checkbox.git",
+  "_target": "1.1.7",
+  "_originalSource": "bootstrap-checkbox"
+}
