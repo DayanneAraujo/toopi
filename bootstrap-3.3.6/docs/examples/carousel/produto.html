@@ -37,16 +37,15 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Preço', 'Quantidade'],
+          ['Normal',     11],
+          ['Alto',      2],
+          ['Muito Alto',  2],
+
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Preços dos Itens'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -103,7 +102,7 @@
 		<table class="table">
     
     <tbody>
-      <tr class="info">
+      <tr class="danger">
         <td>Preço Máximo</td>
         <td>8,60</td>
       </tr>
@@ -111,7 +110,7 @@
         <td>Preço Médiano</td>
         <td>2,30</td>
       </tr>
-      <tr class="info">
+      <tr class="success">
         <td>Preço Minimo</td>
         <td>4,60</td>
       </tr>
@@ -125,11 +124,11 @@
 			</div>
 		<div class="col-sm-6 ">
 			
-			<div id="chart_div" style="width: 700px; height: 300px;"></div>
+			<a href="#">Veja as listas da licitações com esse produto</a>
 			
 			</div>
 		</div>
-    
+		<br>
     </div>
     
     
