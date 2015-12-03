@@ -1,0 +1,104 @@
+{% extends "licitacao/base.html" %}
+
+{% block container %}
+
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"  href="#" style="color:yellow; font-weight: bold;">FEIRA LIVRE</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="produtos_grid.html" style="font-weight: bold;">Produtos</a></li>
+        <li><a href="licitacoes.html" style="font-weight: bold;">Licitações</a></li>
+        <li><a href="documentacao.html" style="font-weight: bold;">Documentação</a></li>
+        <li><a href="sobre.html" style="font-weight: bold;">Sobre</a></li>
+        <li><input type="text"  placeholder="Pesquise aqui sobre as compras" class="form-control"></li>
+        <li><button type="submit" class="btn btn-success">Buscar</button></li>
+        <li>
+          <div class="form-group">
+                <input type="password" placeholder="Password" class="form-control">
+                <button type="submit" class="btn btn-success">Sign in</button>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+
+    <h1>Itens</h1>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-6">
+            <div class="input-group">
+
+                      <select class="form-control">
+                    <option value="1">Identificador</option>
+                    <option value="2">Ano</option>
+                    <option value="3">Situação</option>
+
+                      </select>
+
+            </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+      <div class="col-lg-6">
+
+        <div class="input-group">
+          <form action="{% url licitacao:busca_item %}" method="get">
+            <input type="text" name='q' class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Pesquisar</button>
+            </span>
+          </form>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+	<table class="table">
+    <thead>
+      <tr>
+        <th>Licitação</th>
+        <th>Produto</th>
+        <th>valor</th>
+        <th>Situação</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in itens %}
+        {% if item.situacao == "ALTO" or item.situacao == "MUITO ALTO" %}
+        <tr class="danger">
+        {% else %}
+        <tr>
+        {% endif %}
+          <td>{{item.identificador}}</td>
+          <td>{{item.descricao_item}}</td>
+          <td>{{item.valor_item}}</td>
+          <td>{{item.situacao}}</td>
+        </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+     <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+{% endblock %}

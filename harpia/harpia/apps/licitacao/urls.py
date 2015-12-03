@@ -8,4 +8,5 @@ from django.conf.urls import url
 urlpatterns = patterns(
     'licitacao.views',
     url(r'^$', 'pag_inicial', name='pagina_inicial'),
+    url(r'^$', 'busca_item', name='busca_item'),
 )
