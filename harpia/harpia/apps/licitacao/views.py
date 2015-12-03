@@ -17,7 +17,7 @@ pag_inicial = PaginaInicialView.as_view()
 
 
 class BuscarItemView(TemplateView):
-    template_name = 'licitacao/licitacoes_list.html'
+    template_name = 'licitacao/listar_itens/licitacoes_list.html'
 
     def get_queryset(self, **kwargs):
         query = kwargs.get('q')
@@ -34,7 +34,7 @@ busca_item = BuscarItemView.as_view()
 
 
 class ListarLicitacoesView(TemplateView):
-    template_name = 'licitacao/licitacoes_list.html'
+    template_name = 'licitacao/listar_itens/licitacoes_list.html'
 
     def get_queryset(self, **kwargs):
         return ItensLicitacao.objects.all()

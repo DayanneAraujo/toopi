@@ -105,10 +105,13 @@ WSGI_APPLICATION = 'harpia.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': config(
+        'DATABASE_URL',
+        default='sqlite:///{0}/{1}'.format(
+            BASE_DIR.child('db'),
+            'alpha.sqlite3'),
+        cast=db_url),
 }
 
 FIXTURE_DIRS = (join(BASE_DIR.child('db'), 'fixtures'), )

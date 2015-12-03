@@ -1,0 +1,50 @@
+{% extends "licitacao/base.html" %}
+
+{% block container %}
+
+{{ block.super }}
+
+<div class="container">
+
+    <h1>Itens</h1>
+    <hr>
+    <form action="{% url 'licitacao:busca_item' %}" method="get"
+          class="form-inline">
+      <div class="form-group col-lg-8">
+        <input type="text" name='q' class="form-control" placeholder="Search for...">
+        <div class="input-group col-lg-4">
+            <select class="form-control">
+              <option value="1">Identificador</option>
+              <option value="2">Ano</option>
+              <option value="3">Situação</option>
+            </select>
+        </div>
+        <button class="btn btn-default" type="submit">Pesquisar</button>
+      </div>
+    </form>
+	<table class="table">
+    <thead>
+      <tr>
+        <th>Licitação</th>
+        <th>Produto</th>
+        <th>valor</th>
+        <th>Situação</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in listagem %}
+        {% if item.situacao == "ALTO" or item.situacao == "MUITO ALTO" %}
+        <tr class="danger">
+        {% else %}
+        <tr>
+        {% endif %}
+          <td>{{item.identificador}}</td>
+          <td>{{item.descricao_item}}</td>
+          <td>{{item.valor_item}}</td>
+          <td>{{item.situacao}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
