@@ -57,7 +57,7 @@
       <div class="col-lg-6">
 
         <div class="input-group">
-          <form action="{% url licitacao:busca_item %}" method="get">
+          <form action="{% url 'licitacao:busca_item' %}" method="get">
             <input type="text" name='q' class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">Pesquisar</button>
@@ -77,7 +77,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for item in itens %}
+    {% for item in listagem %}
         {% if item.situacao == "ALTO" or item.situacao == "MUITO ALTO" %}
         <tr class="danger">
         {% else %}

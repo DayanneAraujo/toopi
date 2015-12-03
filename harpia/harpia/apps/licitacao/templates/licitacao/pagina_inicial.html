@@ -16,17 +16,11 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="produtos_grid.html" style="font-weight: bold;">Produtos</a></li>
-        <li><a href="licitacoes.html" style="font-weight: bold;">Licitações</a></li>
+        <li><a href="{% url 'licitacao:listagem' %}" style="font-weight: bold;">Licitações</a></li>
         <li><a href="documentacao.html" style="font-weight: bold;">Documentação</a></li>
         <li><a href="sobre.html" style="font-weight: bold;">Sobre</a></li>
         <li><input type="text"  placeholder="Pesquise aqui sobre as compras" class="form-control"></li>
         <li><button type="submit" class="btn btn-success">Buscar</button></li>
-        <li>
-          <div class="form-group">
-                <input type="password" placeholder="Password" class="form-control">
-                <button type="submit" class="btn btn-success">Sign in</button>
-          </div>
-        </li>
       </ul>
       </div>
     </div>
