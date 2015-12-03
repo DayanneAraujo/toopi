@@ -10,9 +10,9 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Preço', 'Quantidade'],
-          ['Normal',     {{ normal }}],
-          ['Alto',      {{alto}}],
-          ['Muito Alto',  {{muito_alto}}],
+          ['Normal',     11],
+          ['Alto',      4],
+          ['Muito Alto',  2],
 
         ]);
 
@@ -48,6 +48,12 @@
         <li><a href="sobre.html" style="font-weight: bold;">Sobre</a></li>
         <li><input type="text"  placeholder="Pesquise aqui sobre as compras" class="form-control"></li>
         <li><button type="submit" class="btn btn-success">Buscar</button></li>
+        <li>
+          <div class="form-group">
+                <input type="password" placeholder="Password" class="form-control">
+                <button type="submit" class="btn btn-success">Sign in</button>
+          </div>
+        </li>
       </ul>
       </div>
     </div>
@@ -58,10 +64,15 @@
 
 {% block container_marketing %}
 
+    <div class="container">
+
+		<h1>Pão</h1>
+
 		<div class="row">
 		  <div class="col-sm-6 ">
 
-		      <h1>{{self.object.item}}</h1>
+			<img src="http://www.bulldozerfaith.com/wp-content/uploads/2015/01/bread.jpg" width="500px" height="300px" />
+
 		</div>
 		<div class="col-sm-6 ">
 
@@ -70,15 +81,15 @@
     <tbody>
       <tr class="danger">
         <td>Preço Máximo</td>
-        <td>R$ {{self.object.maximo}}</td>
+        <td>R$ 10.38</td>
       </tr>
       <tr class="sucess">
         <td>Preço Médiano</td>
-        <td>R$ {{self.object.diferenca}}</td>
+        <td>R$ 8.58</td>
       </tr>
       <tr class="success">
         <td>Preço Minimo</td>
-        <td>R$ {{ self.object.quartil1}}</td>
+        <td>R$ 3.08</td>
       </tr>
     </tbody>
   </table>
@@ -100,5 +111,4 @@
       </footer>
 
     </div><!-- /.container -->
-
     {% endblock %}
