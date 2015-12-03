@@ -65,9 +65,10 @@ target/
 # alpha
 .env
 .DS_Store
-alpha/media/*
-alpha/staticfiles/*
+harpia/media/*
+harpia/staticfiles/*
 vendor/
+bower_components/
 sql/
 
 # plasTeX
