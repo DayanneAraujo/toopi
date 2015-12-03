@@ -67,8 +67,6 @@ target/
 .DS_Store
 harpia/media/*
 harpia/staticfiles/*
-vendor/
-bower_components/
 sql/
 
 # plasTeX
