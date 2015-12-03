@@ -51,25 +51,23 @@ LOCAL_APPS = (
     'licitacao',
 )
 
-# THIRD_PARTY_APPS = (
-#     'bootstrap3',
-#     'django_filters',
-#     'djangobower',
-#     'djangoformsetjs',
-#     'djcelery',
-#     'formtools',
-#     'gunicorn',
-#     'localflavor',
-#     'model_mommy',
-#     'raven.contrib.django.raven_compat',
-#     'rest_framework',
-#     'storages',
-#     'rater',
-#     'taggit',
-#     'widget_tweaks',
-# )
+THIRD_PARTY_APPS = (
+    'bootstrap3',
+    'django_filters',
+    'djangobower',
+    'djangoformsetjs',
+    'formtools',
+    'gunicorn',
+    'localflavor',
+    'model_mommy',
+    'raven.contrib.django.raven_compat',
+    'rest_framework',
+    'storages',
+    'taggit',
+    'widget_tweaks',
+)
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 ROOT_URLCONF = 'harpia.urls'
 
@@ -137,4 +135,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = config('STATIC_ROOT', default=BASE_DIR.child('staticfiles'))
+
+STATIC_URL = config('STATIC_URL', default='/static/')
+
+STATICFILES_DIRS = (BASE_DIR.child('static'), )
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder'
+)
+
+BOWER_COMPONENTS_ROOT = config('BOWER_COMPONENTS_ROOT',
+                               default=BASE_DIR.ancestor(1).child('vendor'))
