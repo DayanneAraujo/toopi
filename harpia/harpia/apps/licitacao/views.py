@@ -7,11 +7,13 @@ from models import ItensLicitacao
 from licitacao.models import Item
 
 
-__all__ = ['pag_inicial', 'listagem', 'busca_item', 'detalhe_tipo_item']
+__all__ = ['pag_inicial', 'listagem',
+           'busca_item', 'detalhe_tipo_item',
+           'detalhe_produto']
 
 
 class PaginaInicialView(TemplateView):
-    template_name = 'licitacao/pagina_inicial.html'
+    template_name = 'licitacao/pag_inicial/pagina_inicial.html'
 
 pag_inicial = PaginaInicialView.as_view()
 
@@ -56,6 +58,8 @@ class DetalheProdutoView(DetailView):
         context = super(DetalheProdutoView, self).get_context_data(**kwargs)
         # context['object'] = ItensLicitacao.objects.get()
         return context
+
+detalhe_produto = DetalheProdutoView.as_view()
 
 
 class DetalheItemView(DetailView):

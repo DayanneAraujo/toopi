@@ -12,5 +12,7 @@ urlpatterns = patterns(
     url(r'^listar-itens/$', 'listagem', name='listagem'),
     url(r'^detalhe-item/(?P<pk>[-\w]+)/$',
         'detalhe_tipo_item', name='detalhe_tipo_item'),
+    url(r'^detalhe-produto/(?P<pk>[-\w]+)/$',
+        'detalhe_produto', name='detalhe_produto'),
 
 )
