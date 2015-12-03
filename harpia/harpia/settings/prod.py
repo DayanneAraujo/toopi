@@ -65,6 +65,7 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'storages',
     'taggit',
+    'whitenoise',
     'widget_tweaks',
 )
 
@@ -136,8 +137,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+STATIC_ROOT = config('STATIC_ROOT', default=BASE_DIR.child('staticfiles'))
+
+STATIC_URL = config('STATIC_URL', default='/static/')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
@@ -148,6 +150,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'djangobower.finders.BowerFinder'
 )
+
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 BOWER_COMPONENTS_ROOT = config('BOWER_COMPONENTS_ROOT',
                                default=BASE_DIR.ancestor(1).child('vendor'))
