@@ -22,6 +22,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Preço do Papel', 'Quantidade'],
+          ['Normal',     11],
+          ['Alto',      5],
+          ['Muito Alto',  4],
+
+        ]);
+
+        var options = {
+          title: 'Custo do Papel',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+    
     {% block extra_styles %}
     {% endblock %}
   </head>
