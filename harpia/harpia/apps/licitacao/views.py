@@ -56,7 +56,10 @@ class DetalheProdutoView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetalheProdutoView, self).get_context_data(**kwargs)
-        # context['object'] = ItensLicitacao.objects.get()
+        for item in Item.objects.all():
+            import ipdb; ipdb.set_trace()
+            if item.item in self.object.descricao_detalhada_item:
+                context['item'] = item
         return context
 
 detalhe_produto = DetalheProdutoView.as_view()
