@@ -3,7 +3,8 @@
 from django.conf.urls import include
 from django.conf.urls import patterns
 from django.conf.urls import url
-
+from django.conf.urls import handler404
+from licitacao.views import error_view
 
 urlpatterns = patterns(
     'licitacao.views',
@@ -16,3 +17,5 @@ urlpatterns = patterns(
         'detalhe_produto', name='detalhe_produto'),
 
 )
+
+handler404 = error_view

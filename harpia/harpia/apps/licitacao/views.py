@@ -5,11 +5,13 @@ from django.views.generic import DetailView
 from django.core.urlresolvers import reverse
 from models import ItensLicitacao
 from licitacao.models import Item
+from django.http import HttpResponseRedirect
+import time
 
 
 __all__ = ['pag_inicial', 'listagem',
            'busca_item', 'detalhe_tipo_item',
-           'detalhe_produto']
+           'detalhe_produto', 'error_view']
 
 
 class PaginaInicialView(TemplateView):
@@ -57,7 +59,6 @@ class DetalheProdutoView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(DetalheProdutoView, self).get_context_data(**kwargs)
         for item in Item.objects.all():
-            import ipdb; ipdb.set_trace()
             if item.item in self.object.descricao_detalhada_item:
                 context['item'] = item
         return context
@@ -83,3 +84,26 @@ class DetalheItemView(DetailView):
         return context
 
 detalhe_tipo_item = DetalheItemView.as_view()
+
+
+class ErrorView(TemplateView):
+    template_name = "licitacao/error.html"
+
+    def get(self, **kwargs):
+        time.sleep(5)
+        return HttpResponseRedirect('/')
+        
+error_view = ErrorView.as_view()
+
+
+
+
+
+
+
+
+
+
+
+
+
