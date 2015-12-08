@@ -1,109 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+{% extends "licitacao/base.html" %}
 
-    <title>Feira Livre</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-    
-    
-    
-  </head>
-<!-- NAVBAR
-================================================== -->
-  <body>
-     <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand"  href="index.html" style="color:#608ae3; font-weight: bold;">FEIRA LIVRE</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li><a href="produtos_grid.html" style="font-weight: bold;">Produtos</a></li>
-                <li><a href="licitacoes.html" style="font-weight: bold;">Licitações</a></li>
-                <li><a href="documentacao.html" style="font-weight: bold;">Documentação</a></li>
-                <li><a href="sobre.html" style="font-weight: bold;">Sobre</a></li>
-                
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      </div>
+{% block container %}
+{{ block.super }}
   
     
-    <div class="container">
+  <div class="container">
     <img width="1130px" height="400px" src="http://www.atricon.org.br/wp-content/uploads/2015/09/NOVO_horizontal__Nova-Marca-aplicada_CONGRESSO.jpg">
 	
     <h4>Equipe: Andurá</h4>
-    <h5>Amaro Neto</h5>
-    <h5>Dayanne Araújo</h5>
-    <h5>Jamerson Lima</h5>
-    <h5>Luiz Braga</h5>
-    
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lectus leo, 
-    auctor eget mollis ut, gravida a mi. Vivamus vel auctor mi. Quisque mollis diam eget felis dignissim vestibulum. Phasellus bibendum, odio non fermentum luctus, magna lectus rhoncus metus, eu ultrices nibh arcu ut enim. Ut volutpat odio dolor, sed euismod sem egestas nec. Aenean mollis leo eget mi euismod, sed luctus felis eleifend. Vestibulum laoreet in velit in tempor. 
-    Aliquam dapibus dui vel augue varius, vel aliquam eros rutrum.</p>
-    <p>Vestibulum hendrerit vehicula libero iaculis porttitor. Nunc quis hendrerit odio, 
-    non fringilla odio. Suspendisse potenti. Mauris vitae ligula ut urna dictum rutrum a non libero. 
-    Duis viverra velit et felis lobortis egestas. Ut porta nibh tortor, a semper diam consequat non. 
-    Aliquam mattis at nisl quis suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Pellentesque pulvinar luctus nunc eu cursus. Morbi vitae scelerisque massa, vitae viverra arcu. 
-    Integer volutpat hendrerit tortor id malesuada. Nulla finibus cursus fringilla. 
-    Phasellus sodales odio eu leo pulvinar facilisis.</p>
-     <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+    <ul>
+      <li><h5>Amaro Neto</h5></li>
+      <li><h5>Dayanne Araújo</h5></li>
+      <li><h5>Jamerson Lima</h5></li>
+      <li><h5>Luiz Braga</h5></li>
+    </ul>
+    <div class="container" text-align="justify">
+    <p>O <b>Feira Livre</b> consiste em um site que propõe exibir preços de produtos adquiridos pelo poder público federal através de licitações. Os itens exibidos são um conjunto limitado, e foram selecionados por tipicamente fazerem parte do cotidiano, como café, açúcar, papel ou gasolina. O objetivo é que a própria população seja capaz de avaliar se o preço pago por um produto pelo poder público está de acordo com o que é praticado normalmente no mercado. Caso julgue que há sobrepreço, o usuário é orientado a realizar uma comunicação de irregularidade na Ouvidoria do Tribunal de Contas da União (TCU), que irá analisar as denúncias. Uma vez que todas as informações de licitações exibidas no site são obtidas a partir dos registros disponibilizados a partir do Portal de Dados Abertos do Brasil (http://www.dados.gov.br), as irregularidades encaminhadas ao TCU são compostas por dados fundamentais para a análise, como o produto no qual ocorre o sobrepreço e, principalmente, a indicação do número da licitação em que ocorre a discrepância. </p>
 
-    </div><!-- /.container -->
-</div>
+    <p><b>Feira Livre</b> foi um dos três vencedores do I Hackathon dos Tribunais de Contas. O evento, realizado entre os dias 1 e 4 de dezembro, no âmbito do XXVIII Congresso dos Tribunais de Contas do Brasil.</p>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
+    </div>
+  </div><!-- /.container -->
+{% endblock %}
+
+
 

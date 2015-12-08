@@ -2,7 +2,6 @@
 
 from django.db import models
 
-
 class Licitacao(models.Model):
     dataAberturaProposta = models.DateTimeField(
         verbose_name=u'data de abertura da proposta', null=True, blank=True)

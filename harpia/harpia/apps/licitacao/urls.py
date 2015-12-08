@@ -15,6 +15,10 @@ urlpatterns = patterns(
         'detalhe_tipo_item', name='detalhe_tipo_item'),
     url(r'^detalhe-produto/(?P<pk>[-\w]+)/$',
         'detalhe_produto', name='detalhe_produto'),
+    url(r'^listar-produtos/$', 'produtos_grid', name='produtos_grid'),
+    url(r'^produto/$', 'produto_detalhe', name='produto_detalhe'),
+    url(r'^documentacao/$', 'documentacao', name='documentacao'),
+    url(r'^sobre/$', 'sobre', name='sobre'),
 
 )
 
