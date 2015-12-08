@@ -1,4 +1,5 @@
 
+
 {% load static %}
 {% load bootstrap3 %}
 {% load staticfiles %}
@@ -69,10 +70,10 @@
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li><a href="produtos_grid.html" style="font-weight: bold;">Produtos</a></li>
+                  <li><a href="/listar-produtos" style="font-weight: bold;">Produtos</a></li>
                   <li><a href="{% url 'licitacao:listagem' %}" style="font-weight: bold;">Licitações</a></li>
-                  <li><a href="documentacao.html" style="font-weight: bold;">Documentação</a></li>
-                  <li><a href="sobre.html" style="font-weight: bold;">Sobre</a></li>
+                  <li><a href="/documentacao" style="font-weight: bold;">Documentação</a></li>
+                  <li><a href="/sobre" style="font-weight: bold;">Sobre</a></li>
                   <li><a href="https://contas.tcu.gov.br/pls/apex/f?p=sisouv_web:13"
                          style="color: red;">Comunicar Irregularidade</a></li>
                 </ul>

@@ -11,7 +11,9 @@ import time
 
 __all__ = ['pag_inicial', 'listagem',
            'busca_item', 'detalhe_tipo_item',
-           'detalhe_produto', 'error_view']
+           'detalhe_produto', 'error_view', 
+           'produtos_grid', 'produto_detalhe',
+           'documentacao']
 
 
 class PaginaInicialView(TemplateView):
@@ -95,7 +97,25 @@ class ErrorView(TemplateView):
         
 error_view = ErrorView.as_view()
 
+class ListarProdutosView(TemplateView):
+    template_name = 'licitacao/produtos_grid.html'
 
+produtos_grid = ListarProdutosView.as_view()
+
+class DetalheProdutosView(TemplateView):
+    template_name = 'licitacao/produto.html'
+
+produto_detalhe = DetalheProdutosView.as_view()
+
+class DocumentacaoView(TemplateView):
+    template_name = 'licitacao/documentacao.html'
+
+documentacao = DocumentacaoView.as_view()
+
+class SobreView(TemplateView):
+    template_name = 'licitacao/sobre.html'
+
+sobre = SobreView.as_view()
 
 
 
